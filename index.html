@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ha project</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .search-form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .amenities-group {
+            margin-bottom: 20px;
+        }
+
+        .amenities-group label {
+            margin-right: 15px;
+            color: #555;
+        }
+
+        .search-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 0 auto;
+            width: 200px;
+        }
+
+        .search-button:hover {
+            background-color: #45a049;
+        }
+
+        .results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .property-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .property-image {
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+
+        .property-info {
+            padding: 20px;
+        }
+
+        .property-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .property-price {
+            font-size: 20px;
+            color: #4CAF50;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .property-details {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .property-amenities {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .amenity-tag {
+            background-color: #f0f0f0;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Mockup design</h1>
+            <p>For intelligent system project</p>
+        </div>
+
+        <div class="search-form">
+            <form id="propertySearch">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="price">Budget Range</label>
+                        <input type="number" id="price" name="price" placeholder="Maximum budget">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" id="location" name="location" placeholder="Enter preferred location">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="property-type">Property Type</label>
+                        <select id="property-type" name="property-type">
+                            <option value="">Select type</option>
+                            <option value="apartment">Apartment</option>
+                            <option value="house">House</option>
+                            <option value="condo">Condo</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bedrooms">Bedrooms</label>
+                        <select id="bedrooms" name="bedrooms">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4+</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="amenities-group">
+                    <label>Amenities:</label>
+                    <input type="checkbox" id="parking" name="amenities" value="parking">
+                    <label for="parking">Parking</label>
+
+                    <input type="checkbox" id="gym" name="amenities" value="gym">
+                    <label for="gym">Gym</label>
+
+                    <input type="checkbox" id="pool" name="amenities" value="pool">
+                    <label for="pool">Pool</label>
+
+                    <input type="checkbox" id="security" name="amenities" value="security">
+                    <label for="security">Security</label>
+                </div>
+
+                <button type="submit" class="search-button">Search Properties</button>
+            </form>
+        </div>
+
+        <div class="results">
+            <!-- Sample Property Cards -->
+            <div class="property-card">
+                <div class="property-image">Property Image</div>
+                <div class="property-info">
+                    <div class="property-title">Apartment 1</div>
+                    <div class="property-price">99đ</div>
+                    <div class="property-details">
+                        <div>2 Bedrooms • 2 Bathrooms</div>
+                        <div>Loc 1</div>
+                    </div>
+                    <div class="property-amenities">
+                        <span class="amenity-tag">Parking</span>
+                        <span class="amenity-tag">Gym</span>
+                        <span class="amenity-tag">Security</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="property-image">Property Image</div>
+                <div class="property-info">
+                    <div class="property-title">SHouse</div>
+                    <div class="property-price">99đ</div>
+                    <div class="property-details">
+                        <div>3 Bedrooms • 2.5 Bathrooms</div>
+                        <div>loc 2</div>
+                    </div>
+                    <div class="property-amenities">
+                        <span class="amenity-tag">Parking</span>
+                        <span class="amenity-tag">Pool</span>
+                        <span class="amenity-tag">Garden</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="property-image">Property Image</div>
+                <div class="property-info">
+                    <div class="property-title">Apartment3</div>
+                    <div class="property-price">99đ</div>
+                    <div class="property-details">
+                        <div>1 Bedroom • 1 Bathroom</div>
+                        <div>loc 3</div>
+                    </div>
+                    <div class="property-amenities">
+                        <span class="amenity-tag">Gym</span>
+                        <span class="amenity-tag">Security</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
